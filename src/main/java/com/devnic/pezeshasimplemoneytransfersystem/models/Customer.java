@@ -1,6 +1,7 @@
 package com.devnic.pezeshasimplemoneytransfersystem.models;
 
-import com.devnic.pezeshasimplemoneytransfersystem.commons.PO;
+import com.devnic.pezeshasimplemoneytransfersystem.commons.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,7 +25,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer extends PO {
+public class Customer extends BaseEntity {
     @Column(name = "customer_name", nullable = false)
     @NotBlank(message = "full name is required")
     private String customerName;
@@ -33,12 +34,13 @@ public class Customer extends PO {
     @Email
     @Size(max = 200)
     private String customerEmail;
-    @Column(name = "customer_password")
-    @NotBlank(message = "password is required")
+    @Column(name = "customer_pin")
+    @NotBlank(message = "pin is required")
     @Size(max = 255)
-    private String password;
+    private String pin;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CustomerAccounts> orders;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JsonManagedReference
+    private List<CustomerAccounts> accountsList;
 
 }

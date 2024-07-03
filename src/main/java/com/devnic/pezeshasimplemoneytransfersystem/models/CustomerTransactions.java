@@ -1,6 +1,6 @@
 package com.devnic.pezeshasimplemoneytransfersystem.models;
 
-import com.devnic.pezeshasimplemoneytransfersystem.commons.PO;
+import com.devnic.pezeshasimplemoneytransfersystem.commons.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CustomerTransactions extends PO {
+public class CustomerTransactions extends BaseEntity {
     private String sourceAccount;
     private String destinationAccount;
     private String sendAmount;

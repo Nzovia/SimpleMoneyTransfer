@@ -8,11 +8,14 @@ import com.devnic.pezeshasimplemoneytransfersystem.models.CustomerTransactions;
 import com.devnic.pezeshasimplemoneytransfersystem.repositories.AccountsRepository;
 import com.devnic.pezeshasimplemoneytransfersystem.repositories.TransactionRepository;
 import com.devnic.pezeshasimplemoneytransfersystem.services.interfaces.TransactionProcessingService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import static com.devnic.pezeshasimplemoneytransfersystem.utils.GenerateRandomUUIDUtil.generateUniqueUUIDString;
 
 /**
  * @author Nicholas Nzovia
@@ -22,6 +25,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TransactionProcessingServiceImpl implements TransactionProcessingService {
     private final TransactionRepository transactionRepository;
     private final AccountsRepository accountsRepository;
@@ -46,6 +50,7 @@ public class TransactionProcessingServiceImpl implements TransactionProcessingSe
             }
 
             var transaction = new CustomerTransactions();
+            transaction.setUuid(generateUniqueUUIDString());
             transaction.setSourceAccount(transaction.getSourceAccount());
             transaction.setDestinationAccount(transaction.getDestinationAccount());
             transaction.setSendAmount(transaction.getSendAmount());
@@ -64,7 +69,7 @@ public class TransactionProcessingServiceImpl implements TransactionProcessingSe
             return new SuccessResponse(200,"Transaction Processed Successfully");
 
         }catch (Exception exception){
-            throw new RuntimeException(exception.getMessage());
+            throw new NegativeEvaluationException(exception.getMessage());
         }
     }
 }

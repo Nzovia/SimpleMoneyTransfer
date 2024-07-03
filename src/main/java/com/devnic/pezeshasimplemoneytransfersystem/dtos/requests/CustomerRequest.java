@@ -16,6 +16,6 @@ import lombok.Setter;
 public class CustomerRequest {
     private String customerName;
     private String customerEmail;
-    private String password;
+    private String pin;
 
 }

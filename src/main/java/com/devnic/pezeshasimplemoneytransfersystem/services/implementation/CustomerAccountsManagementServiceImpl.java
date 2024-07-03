@@ -10,9 +10,12 @@ import com.devnic.pezeshasimplemoneytransfersystem.models.CustomerAccounts;
 import com.devnic.pezeshasimplemoneytransfersystem.repositories.AccountsRepository;
 import com.devnic.pezeshasimplemoneytransfersystem.repositories.CustomerRepository;
 import com.devnic.pezeshasimplemoneytransfersystem.services.interfaces.CustomerAccountsManagementService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
+
+import static com.devnic.pezeshasimplemoneytransfersystem.utils.GenerateRandomUUIDUtil.generateUniqueUUIDString;
 
 /**
  * @author Nicholas Nzovia
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CustomerAccountsManagementServiceImpl implements CustomerAccountsManagementService {
     private final CustomerRepository customerRepository;
     private final AccountsRepository accountsRepository;
@@ -35,15 +39,16 @@ public class CustomerAccountsManagementServiceImpl implements CustomerAccountsMa
                 throw new ResourceTakenException("Email already exists");
             }
             Customer onBoardedCustomer = new Customer();
+            onBoardedCustomer.setUuid(generateUniqueUUIDString());
             onBoardedCustomer.setCustomerName(customerRequest.getCustomerName());
             onBoardedCustomer.setCustomerEmail(customerRequest.getCustomerEmail());
 
-            //TODO. on adding spring security i will utilize ByCrypt encoder to Hash Passwords
-            onBoardedCustomer.setPassword(customerRequest.getPassword());
+            //TODO. on adding spring security i will utilize ByCrypt encoder to Hash Pins
+            onBoardedCustomer.setPin(customerRequest.getPin());
 
             //saving customer to the database
             customerRepository.save(onBoardedCustomer);
-            return new SuccessResponse(200,"Customer OnBoarded Created");
+            return new SuccessResponse(200,"Customer OnBoarded Successfully");
         }catch (Exception e){
             throw new ResourceTakenException(e.getMessage());
 
@@ -60,11 +65,12 @@ public class CustomerAccountsManagementServiceImpl implements CustomerAccountsMa
             }
 
             //Getting Account Holder.
-            Customer customer = customerRepository.findByUuid(customerAccountRequest.getCustomerId())
+            Customer customer = customerRepository.findByUuid(customerAccountRequest.getCustomerUuid())
                     .orElseThrow(() ->
-                            new RuntimeException("Customer not found with ID: " + customerAccountRequest.getCustomerId()));
+                            new RuntimeException("Customer not found with ID: " + customerAccountRequest.getCustomerUuid()));
 
             CustomerAccounts customerAccounts = new CustomerAccounts();
+            customerAccounts.setUuid(generateUniqueUUIDString());
             customerAccounts.setCustomer(customer);
             customerAccounts.setCustomerAccountNumber(customerAccountRequest.getCustomerAccountNumber());
             customerAccounts.setAccountBalance(customerAccountRequest.getInitialAccountBalance());

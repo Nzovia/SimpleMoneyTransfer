@@ -18,5 +18,5 @@ import java.math.BigDecimal;
 public class CustomerAccountRequest {
     private  String customerAccountNumber;
     private BigDecimal initialAccountBalance;
-    private String customerId;
+    private String customerUuid;
 }
