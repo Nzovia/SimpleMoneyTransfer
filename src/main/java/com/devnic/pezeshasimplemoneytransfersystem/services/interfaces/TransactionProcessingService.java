@@ -1,5 +1,8 @@
 package com.devnic.pezeshasimplemoneytransfersystem.services.interfaces;
 
+import com.devnic.pezeshasimplemoneytransfersystem.dtos.requests.TransactionRequest;
+import com.devnic.pezeshasimplemoneytransfersystem.dtos.responses.SuccessResponse;
+
 /**
  * @author Nicholas Nzovia
  * @On 03/07/2024
@@ -7,4 +10,6 @@ package com.devnic.pezeshasimplemoneytransfersystem.services.interfaces;
  */
 
 public interface TransactionProcessingService {
+    SuccessResponse transactionProcessing(TransactionRequest transactionRequest);
+
 }

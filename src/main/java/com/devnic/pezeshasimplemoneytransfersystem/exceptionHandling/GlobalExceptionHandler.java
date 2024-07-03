@@ -22,6 +22,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ExceptionResponseBody>  handleResourceTakenException(ResourceTakenException ex){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ExceptionResponseBody(ex.getMessage(), ex.getCause()));
     }
+  @ExceptionHandler(NegativeEvaluationException.class)
+    public ResponseEntity<ExceptionResponseBody>  handleResourceTakenException(NegativeEvaluationException ex){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ExceptionResponseBody(ex.getMessage(), ex.getCause()));
+    }
 
 
 }

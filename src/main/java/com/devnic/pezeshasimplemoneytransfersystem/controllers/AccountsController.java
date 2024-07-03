@@ -4,6 +4,7 @@ import com.devnic.pezeshasimplemoneytransfersystem.dtos.requests.CustomerAccount
 import com.devnic.pezeshasimplemoneytransfersystem.dtos.requests.CustomerRequest;
 import com.devnic.pezeshasimplemoneytransfersystem.dtos.responses.SuccessResponse;
 import com.devnic.pezeshasimplemoneytransfersystem.models.CustomerAccounts;
+import com.devnic.pezeshasimplemoneytransfersystem.services.implementation.CustomerAccountsManagementServiceImpl;
 import com.devnic.pezeshasimplemoneytransfersystem.services.interfaces.CustomerAccountsManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/account")
 @RequiredArgsConstructor
 public class AccountsController {
-    private final CustomerAccountsManagementService customerAccountsManagementService;
+    private final CustomerAccountsManagementServiceImpl customerAccountsManagementService;
 
     @PostMapping("/customer")
     private ResponseEntity<SuccessResponse> customerOnboarding(@RequestBody CustomerRequest customerRequest){

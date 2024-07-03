@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Nicholas Nzovia
  * @On 03/07/2024
@@ -18,10 +20,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CustomerTransactions extends PO {
-    private String senderUUid;
-    private String recipientUUid;
+    private String sourceAccount;
+    private String destinationAccount;
     private String sendAmount;
-    private String transactionDate;
+    private LocalDateTime transactionDate;
+
 
 
 }
