@@ -26,10 +26,11 @@ The Simple Transfer API has been built in
         SpringBoot <version>3.3.1</version>
 
 #### Running The Code
-1. Getting The source Code git clone git@github.com:Nzovia/SimpleMoneyTransfer.git or git clone https://github.com/Nzovia/SimpleMoneyTransfer.git 
-2. Wait for some minutes after pull the code for dependencies to update.
-3. Open your terminal and execute -> mvn clean, mvn spring-boot:run
-4.  package App into deployable jar and skip Tests -> by executing, mvn clean package -DskipTests
+1. Getting The source Code git clone git@github.com:Nzovia/SimpleMoneyTransfer.git or git clone https://github.com/Nzovia/SimpleMoneyTransfer.git
+2. Create mysql database by executing the following command - create database money_transfer
+3. Open with your favorite IDE and Wait for some minutes after pull the code for dependencies to update.
+4. Open your terminal and execute -> mvn clean, mvn spring-boot:run
+5.  package App into deployable jar and skip Tests -> by executing, mvn clean package -DskipTests
 
 ### Post Test Results
 ##### Fig 1. Customer Onboarding
@@ -42,6 +43,9 @@ The Simple Transfer API has been built in
 
 ##### Fig 3 Transfer Processing success
 ![TransactionSuccess](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/ce183515-fcdf-43dd-b209-6c641910d519)
+
+#### Concurrency Handling.
+I utilized @Transaction annotation in the service level.
 
 
 
