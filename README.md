@@ -21,6 +21,7 @@ Customer Entity has customer details whereas Accounts entity hold account detail
 4. POST http://localhost:8090/api/v1/transfers            - Make Transfer Request.
 
 The Simple Transfer API has been built in 
+        MYSQL 8 database
         Java <java.version>17</java.version>
         SpringBoot <version>3.3.1</version>
 
