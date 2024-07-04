@@ -30,6 +30,11 @@ public class TransactionProcessingServiceImpl implements TransactionProcessingSe
     private final TransactionRepository transactionRepository;
     private final AccountsRepository accountsRepository;
 
+    /**
+     * Transaction Processing, the method allows for a/c to a/c transfer and updates the amounts in both.
+     * The method Receives TransactionRequest and Returns a SuccessResponse or throws an Exception
+     * */
+
     @Override
     public SuccessResponse transactionProcessing(TransactionRequest transactionRequest) {
         try{
@@ -41,7 +46,7 @@ public class TransactionProcessingServiceImpl implements TransactionProcessingSe
 
             //ensure send amount is greater than zero
             if(transactionRequest.getSendAmount().compareTo(BigDecimal.ZERO) <= 0){
-                throw new IllegalArgumentException("Send amount must be greater than zero");
+                throw new NegativeEvaluationException("Send amount must be greater than zero");
             }
 
             //Compare Source account balance with sending amount before sending.

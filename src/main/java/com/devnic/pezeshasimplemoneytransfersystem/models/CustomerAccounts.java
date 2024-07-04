@@ -1,6 +1,7 @@
 package com.devnic.pezeshasimplemoneytransfersystem.models;
 
 import com.devnic.pezeshasimplemoneytransfersystem.commons.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
@@ -28,7 +29,6 @@ public class CustomerAccounts extends BaseEntity {
     @Column(nullable = false)
     private BigDecimal accountBalance;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @JoinColumn(name = "customer_uuid", referencedColumnName  = "uuid")
     private Customer customer;
 

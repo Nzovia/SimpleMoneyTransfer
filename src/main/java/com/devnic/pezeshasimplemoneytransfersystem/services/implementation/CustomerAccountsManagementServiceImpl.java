@@ -30,6 +30,10 @@ public class CustomerAccountsManagementServiceImpl implements CustomerAccountsMa
     private final CustomerRepository customerRepository;
     private final AccountsRepository accountsRepository;
 
+    /**
+     * Onboarding Customer to the SimpleMoneyTransfer API
+     * The method Receives CustomerRequest and Returns a SuccessResponse or throws an Exception
+     * */
     @Override
     public SuccessResponse onboardCustomer(CustomerRequest customerRequest) {
 
@@ -55,6 +59,10 @@ public class CustomerAccountsManagementServiceImpl implements CustomerAccountsMa
         }
     }
 
+    /**
+     * Creating Customer Account
+     * The method Receives CustomerAccountRequest and Returns a SuccessResponse or throws an Exception
+     * */
     @Override
     public SuccessResponse createCustomerAccount(CustomerAccountRequest customerAccountRequest) {
         try {
@@ -81,6 +89,11 @@ public class CustomerAccountsManagementServiceImpl implements CustomerAccountsMa
             throw new ResourceTakenException(e.getMessage());
         }
     }
+
+    /**
+    * Retrieving Customer Account Details using the account UUID
+    * The method Returns an Account and the Customer Details
+    * */
     @Override
     public CustomerAccounts getCustomerAccountInformationById(String accountId) {
         try {

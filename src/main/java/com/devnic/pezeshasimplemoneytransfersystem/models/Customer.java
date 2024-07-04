@@ -39,8 +39,8 @@ public class Customer extends BaseEntity {
     @Size(max = 255)
     private String pin;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    @JsonManagedReference
-    private List<CustomerAccounts> accountsList;
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<CustomerAccounts> accountsList;
 
 }
