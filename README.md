@@ -33,15 +33,17 @@ The Simple Transfer API has been built in
 5.  package App into deployable jar and skip Tests -> by executing, mvn clean package -DskipTests
 
 ### Post Test Results
-##### Fig 1. Customer Onboarding
+##### Fig 2. Customer Onboarding
 ![customer customer](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/daff4f06-9d0b-4750-b0e7-49745d2948f8)
-##### Fig 2 Account Creation
+##### Fig 3. Account Creation
 ![accoun creation](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/558ad1b9-7444-4f31-9e87-278c0c6da7d6)
+##### Fig 4. Getting A/C details
+![ac details](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/132f6cfe-767e-4e11-b985-3f8486712efd)
 
-##### Fig 3 Transfer Processing, Funds evaluation
+##### Fig 5. Transfer Processing, Funds evaluation
 ![more money](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/7ae3d332-f43d-4cba-bdbc-1ad5400ba8a7)
 
-##### Fig 3 Transfer Processing success
+##### Fig 6. Transfer Processing success
 ![TransactionSuccess](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/ce183515-fcdf-43dd-b209-6c641910d519)
 
 #### Concurrency Handling.
