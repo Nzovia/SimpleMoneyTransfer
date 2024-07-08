@@ -46,8 +46,6 @@ The Simple Transfer API has been built in
 ##### Fig 6. Transfer Processing success
 ![TransactionSuccess](https://github.com/Nzovia/SimpleMoneyTransfer/assets/52350637/ce183515-fcdf-43dd-b209-6c641910d519)
 
-#### Concurrency Handling.
-I utilized @Transaction annotation in the service level.
 
 
 
